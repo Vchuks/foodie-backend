@@ -22,8 +22,8 @@ app.use((err, req, res, next) => {
 });
 
 
-
-if (!config.get("jwtSecretKey")){
+const jwtSecret = process.env.foodie_jwt || config.get('jwtSecretKey');
+if (!jwtSecret){
     console.log("No jwt Key")
     process.exit(1)
 }

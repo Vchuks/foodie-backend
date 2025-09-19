@@ -36,10 +36,11 @@ const FoodieUser = new mongoose.Schema({
 })
 
 FoodieUser.methods.createToken = function () {
+    const jwtSecret = process.env.foodie_jwt || config.get('jwtSecretKey');
     const token = jwt.sign({
          id: this._id,
          email: this.email 
-        }, config.get("jwtSecretKey"))
+        }, jwtSecret)
     return token
 }
 
