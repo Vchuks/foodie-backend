@@ -29,7 +29,8 @@ if (!jwtSecret){
 }
 
 
-mongoose.connect("mongodb+srv://vchuks4all_db_user:vchuks@cluster0.uwbbtpc.mongodb.net/foodie")
+const db = process.env.dbConnect || "mongodb://localhost/foodie"
+mongoose.connect(db)
 .then(()=> console.log("Connected to DB"))
 .catch((ex) => console.log(`Error connecting to DB ${ex}`))
 

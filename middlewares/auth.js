@@ -8,7 +8,9 @@ module.exports = function checkAuthentication(req, res, next) {
     }
 
     try {
-        const verifiedToken = jwt.verify(token, config.get("jwtSecretKey"))
+        const getSecret = process.env.foodie_jwt || config.get("jwtSecretKey")
+        
+        const verifiedToken = jwt.verify(token, getSecret)
         req.eachUser = verifiedToken
         next()
     } catch (ex) {

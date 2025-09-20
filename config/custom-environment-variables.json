@@ -1,3 +1,4 @@
 {
-    "jwtSecretKey": "foodie_jwt"
+    "jwtSecretKey": "foodie_jwt",
+    "mongodbConnect": "dbConnect"
 }
